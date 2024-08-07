@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import { Route,Routes, useLocation } from 'react-router-dom'
 
+import Login from "./pages/auth/Login"
+import SignUp from "./pages/auth/SignUp"
 import Profile from "./pages/Profile"
 import Cart from "./pages/Cart"
 import Home from "./pages/Home"
-import Login from "./pages/Login"
 import Portfolio from "./pages/Portfolio"
-import SignUp from "./pages/SignUp"
 import Store from "./pages/Store"
 import AdminPage from './pages/AdminPage'
 import E500 from './pages/E500'
@@ -16,6 +15,8 @@ import StoreSidebar from "./components/StoreSidebar"
 import StoreNav from "./components/StoreNav"
 import StoreFooter from "./components/StoreFooter"
 import Private from "./components/auth/Private"
+import Admin from "./components/auth/Admin"
+import ProductDetails from './pages/ProductDetails'
 
 function App() {
   const location = useLocation()
@@ -40,9 +41,9 @@ function App() {
         <Route path='/signup' element= {<SignUp/>}/>
 
         <Route path='/store' element= {<Store/>}/>
-        <Route path='/store/:productId' element= {<Store/>}/>
+        <Route path='/store/:productId' element= {<ProductDetails/>}/>
 
-        <Route path='/error404' element= {<E404/>}/>
+        <Route path='/*' element= {<E404/>}/>
         <Route path='/error500' element= {<E500/>}/>
       </Routes>
 

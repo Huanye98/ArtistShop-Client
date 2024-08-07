@@ -2,7 +2,7 @@ import React from 'react'
 
 function E404() {
   return (
-    <div>E404</div>
+    <div>Error 404 Not found</div>
   )
 }
 
