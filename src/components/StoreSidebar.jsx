@@ -2,7 +2,9 @@ import React from 'react'
 
 function StoreSidebar() {
   return (
-    <div>StoreSidebar</div>
+    <div >
+      StoreSidebar
+      </div>
   )
 }
 

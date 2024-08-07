@@ -2,7 +2,10 @@ import React from 'react'
 
 function StoreNav() {
   return (
-    <div>StoreNav</div>
+    <div >
+      StoreNav
+
+    </div>
   )
 }
 

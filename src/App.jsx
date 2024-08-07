@@ -20,11 +20,11 @@ import ProductDetails from './pages/ProductDetails'
 
 function App() {
   const location = useLocation()
-  const hideLayout = location.pathname.startsWith("/portfolio")
+  const hideLayout = location.pathname.startsWith("/portfolio") || location.pathname ===("/")
 
   return (
-    <div>
-      {!hideLayout && <StoreNav/>}
+    <div className='m-0'>
+      {!hideLayout && <StoreNav />}
       {!hideLayout && <StoreSidebar/>}
 
       <Routes>
