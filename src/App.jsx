@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Route,Routes } from 'react-router'
+import { Route,Routes, useLocation } from 'react-router-dom'
 
 import Profile from "./pages/Profile"
 import Cart from "./pages/Cart"
@@ -16,13 +16,16 @@ import StoreSidebar from "./components/StoreSidebar"
 import StoreNav from "./components/StoreNav"
 import StoreFooter from "./components/StoreFooter"
 
+
 function App() {
-  const [count, setCount] = useState(0)
+  const location = useLocation()
+  const hideLayout = location.pathname.startsWith("/portfolio")
 
   return (
     <div>
-      <StoreSidebar/>
-      <StoreNav/>
+      {!hideLayout && <StoreNav/>}
+      {!hideLayout && <StoreSidebar/>}
+
       <Routes>
         <Route path='/admin' element= {<AdminPage/>}/>
         <Route path='/profile' element= {<Profile/>}/>
@@ -41,8 +44,8 @@ function App() {
         <Route path='/error404' element= {<E404/>}/>
         <Route path='/error500' element= {<E500/>}/>
       </Routes>
-      
-      <StoreFooter/>
+
+      {!hideLayout && <StoreFooter/>}
     </div>
   )
 }
