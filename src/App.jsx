@@ -20,34 +20,35 @@ import ProductDetails from './pages/ProductDetails'
 
 function App() {
   const location = useLocation()
-  const hideLayout = location.pathname.startsWith("/portfolio") || location.pathname ===("/")
-
+  const navAndFooter = location.pathname.startsWith("/portfolio") || location.pathname ===("/")
+  const sidebar = location.pathname.startsWith("/store")  
+ 
   return (
     <div className='m-0'>
-      {!hideLayout && <StoreNav />}
-      {!hideLayout && <StoreSidebar/>}
+      {!navAndFooter  && <StoreNav />}
+      {sidebar && <StoreSidebar/>}
 
       <Routes>
-        <Route path='/admin' element= {<Admin><AdminPage/></Admin>}/>
-        <Route path='/profile' element= {<Private><Profile/></Private>}/>
-        <Route path='/cart' element= {<Private><Cart/></Private>}/>
-        
         <Route path='/' element= {<Home/>}/>
 
         <Route path='/portfolio' element= {<Portfolio/>}/>
         <Route path='/portfolio/:illustId' element= {<Portfolio/>}/>
+        
+        <Route path='/admin' element= {<Admin><AdminPage className="with-layout"/></Admin>}/>
+        <Route path='/profile' element= {<Private><Profile className="with-layout"/></Private>}/>
+        <Route path='/cart' element= {<Private><Cart className="with-layout"/></Private>}/>
 
-        <Route path='/login' element= {<Login/>}/>
-        <Route path='/signup' element= {<SignUp/>}/>
+        <Route path='/login' element= {<Login className="with-layout"/>}/>
+        <Route path='/signup' element= {<SignUp className="with-layout"/>}/>
 
-        <Route path='/store' element= {<Store/>}/>
-        <Route path='/store/:productId' element= {<ProductDetails/>}/>
+        <Route path='/store' element= {<Store className="with-sidebar"/>}/>
+        <Route path='/store/:productId' element= {<ProductDetails className="with-sidebar"/>}/>
 
-        <Route path='/*' element= {<E404/>}/>
-        <Route path='/error500' element= {<E500/>}/>
+        <Route path='/*' element= {<E404 className="with-layout"/>}/>
+        <Route path='/error500' element= {<E500 className="with-layout"/>}/>
       </Routes>
 
-      {!hideLayout && <StoreFooter/>}
+      {!navAndFooter && <StoreFooter/>}
     </div>
   )
 }

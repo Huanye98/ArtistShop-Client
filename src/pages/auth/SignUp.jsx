@@ -17,7 +17,11 @@ function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    const newUser = ({username,email,password})
+    const newUser = {
+      email,
+      username,
+      password,
+    }
     try {
       await service.post("/auth/signup",newUser)
       navigate("/login")
