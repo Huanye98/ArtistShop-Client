@@ -15,7 +15,7 @@ import E404 from './pages/E404'
 import StoreSidebar from "./components/StoreSidebar"
 import StoreNav from "./components/StoreNav"
 import StoreFooter from "./components/StoreFooter"
-
+import Private from "./components/auth/Private"
 
 function App() {
   const location = useLocation()
@@ -27,9 +27,10 @@ function App() {
       {!hideLayout && <StoreSidebar/>}
 
       <Routes>
-        <Route path='/admin' element= {<AdminPage/>}/>
-        <Route path='/profile' element= {<Profile/>}/>
-        <Route path='/cart' element= {<Cart/>}/>
+        <Route path='/admin' element= {<Admin><AdminPage/></Admin>}/>
+        <Route path='/profile' element= {<Private><Profile/></Private>}/>
+        <Route path='/cart' element= {<Private><Cart/></Private>}/>
+        
         <Route path='/' element= {<Home/>}/>
 
         <Route path='/portfolio' element= {<Portfolio/>}/>
