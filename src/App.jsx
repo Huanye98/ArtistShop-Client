@@ -1,34 +1,49 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route,Routes } from 'react-router'
+
+import Profile from "./pages/Profile"
+import Cart from "./pages/Cart"
+import Home from "./pages/Home"
+import Login from "./pages/Login"
+import Portfolio from "./pages/Portfolio"
+import SignUp from "./pages/SignUp"
+import Store from "./pages/Store"
+import AdminPage from './pages/AdminPage'
+import E500 from './pages/E500'
+import E404 from './pages/E404'
+
+import StoreSidebar from "./components/StoreSidebar"
+import StoreNav from "./components/StoreNav"
+import StoreFooter from "./components/StoreFooter"
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <StoreSidebar/>
+      <StoreNav/>
+      <Routes>
+        <Route path='/admin' element= {<AdminPage/>}/>
+        <Route path='/profile' element= {<Profile/>}/>
+        <Route path='/cart' element= {<Cart/>}/>
+        <Route path='/' element= {<Home/>}/>
+
+        <Route path='/portfolio' element= {<Portfolio/>}/>
+        <Route path='/portfolio/:illustId' element= {<Portfolio/>}/>
+
+        <Route path='/login' element= {<Login/>}/>
+        <Route path='/signup' element= {<SignUp/>}/>
+
+        <Route path='/store' element= {<Store/>}/>
+        <Route path='/store/:productId' element= {<Store/>}/>
+
+        <Route path='/error404' element= {<E404/>}/>
+        <Route path='/error500' element= {<E500/>}/>
+      </Routes>
+      
+      <StoreFooter/>
+    </div>
   )
 }
 
