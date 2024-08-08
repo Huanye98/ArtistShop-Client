@@ -25,11 +25,12 @@ function Login() {
       const response = await service.post("/auth/login",userCredentials)
       console.log(response)
 
-      localStorage.setItem("authToken",response.data.authToken)
+      localStorage.setItem("authToken", response.data.authToken)
 
       authenticateUser()
 
-      navigate("/store")
+      navigate("/profile")
+      
     } catch (error) {
       console.log(error)
       if(error.response && error.response.status === 400){

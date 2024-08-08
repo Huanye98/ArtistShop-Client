@@ -1,12 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import service from "../service/service.config";
+
 const AuthContext = createContext();
 
 function AuthWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedUserId, setLoggedUserId] = useState(null);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
-
   const [isAdmin, setIsAdmin] = useState(false);
 
   const authenticateUser = async () => {
@@ -24,6 +24,7 @@ function AuthWrapper(props) {
     }
     try {
       const response = await service.get("/auth/verify")
+      console.log(response)
       setIsLoggedIn(true)
       setLoggedUserId(response.data._id)
       setIsAuthenticating(false)
@@ -46,6 +47,7 @@ function AuthWrapper(props) {
   const passedContext = {
     isLoggedIn,
     loggedUserId,
+    isAdmin,
     authenticateUser
   }
   useEffect(()=>{
