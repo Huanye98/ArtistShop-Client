@@ -26,7 +26,7 @@ function App() {
   return (
     <div className='m-0'>
       {!navAndFooter  && <StoreNav />}
-      {sidebar && <StoreSidebar/>}
+      {sidebar && <StoreSidebar />}
 
       <Routes>
         <Route path='/' element= {<Home/>}/>

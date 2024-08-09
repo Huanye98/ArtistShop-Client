@@ -14,7 +14,7 @@ function AuthWrapper(props) {
     console.log("Attempting to authenticate...")
 
     const authToken = localStorage.getItem("authToken")
-
+    console.log(authToken)
     if(!authToken){
       setIsLoggedIn(false)
       setLoggedUserId(null)
@@ -53,6 +53,7 @@ function AuthWrapper(props) {
   useEffect(()=>{
     authenticateUser()
   },[])
+
   if(isAuthenticating){
     return <h3>Validating credentials ...</h3>
   }

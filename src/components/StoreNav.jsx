@@ -4,8 +4,9 @@ import { AuthContext } from "../context/auth.context";
 
 function StoreNav() {
   const navigate = useNavigate();
-  const { isloggedIn, authenticateUser, isAdmin } = useContext(AuthContext);
+  const { isLoggedIn, authenticateUser, isAdmin } = useContext(AuthContext);
 
+  console.log(isLoggedIn)
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticateUser();
@@ -13,7 +14,7 @@ function StoreNav() {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 fixed top-0 bg-green-400 w-screen h-7" >
 
       <h2>StoreNav</h2>
 
@@ -21,7 +22,7 @@ function StoreNav() {
       <Link to={"/store"}><h3>Store</h3></Link>
 
     {/* if you are not logged in it appears*/}
-      {!isloggedIn && (
+      {!isLoggedIn && (
         <>
           <Link to={"/login"}><h3>Login</h3></Link>
           <Link to={"/signup"}><h3>SignUp</h3>{" "}</Link>
@@ -29,10 +30,11 @@ function StoreNav() {
       )}
 
     {/* si está admin o logeado aparece*/}
-    {isloggedIn && (
+    {isLoggedIn && (
       <>
         {isAdmin && <Link to={"/admin"}><h3>Admin</h3></Link>}
         {!isAdmin && <Link to={"/profile"}><h3>Profile</h3></Link>}
+        {!isAdmin && <Link to={"/cart"}><h3>Cart</h3></Link>}
         <h3 onClick={handleLogout}>Logout</h3>
       </>
     )}
